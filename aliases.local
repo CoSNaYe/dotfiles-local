@@ -1,0 +1,5 @@
+# git
+alias grbd='git checkout develop; git pull origin develop; git checkout -; git rebase develop;'
+
+alias rs='bundle exec rails s'
+alias rr='bundle exec rspec'
