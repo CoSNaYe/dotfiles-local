@@ -4,8 +4,47 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-map <C-n> :NERDTreeToggle<CR>
-" open a NERDTree automatically when vim starts up?
-autocmd vimenter * NERDTree
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Allow for cursor beyond last character
+set virtualedit=onemore
+
+" Keep at least 4 lines below cursor
+set scrolloff=4
+
+" hightlight column and line
+set cursorline
+
+" Sane indentation on pastes
+set pastetoggle=<F12>
+
+" Case insensitive search
+set ic
+
+" No beeping
+set visualbell
+
+" Display the current mode
+set showmode
+
+" use the system clipboard for copy and paste
+set clipboard=unnamed
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+"Remove all trailing whitespace by pressing F5
+nnoremap <Leader>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+map <C-n> :NERDTreeToggle<CR>
+map <Leader>sc :sp db/schema.rb<CR>
+noremap <C-o> :Autoformat<CR>
+nnoremap U :echo " < < ===== C H E C K   C A P S   L O C K ===== > > "<CR>
