@@ -1,2 +1,3 @@
 Plug 'scrooloose/nerdtree'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'Valloric/YouCompleteMe'
