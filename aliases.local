@@ -1,4 +1,4 @@
-/* For Ruby-on-Rails */
+# For Ruby-on-Rails
 alias rs='bundle exec rails s'
 alias rc='bundle exec rails console'
 alias rr='bundle exec rspec'
