@@ -1,0 +1,15 @@
+function parse_git_dirty {
+  if [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit, working directory clean" ]]; then
+    echo "✔ "
+  else
+    echo "✘ "
+  fi
+}
+
+function git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
+  echo "($(parse_git_dirty)${ref#refs/heads/})";
+}
+
+# Ref: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#SEC59
+PROMPT='%{$fg[green]%}%~$fg[yellow]%{$(git_branch)%}$reset_color ♨ '
