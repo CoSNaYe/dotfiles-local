@@ -4,5 +4,8 @@ alias rc='bundle exec rails console'
 alias rr='bundle exec rspec'
 alias rgb='rm Gemfile.lock; bundle'
 
-alias rdd='bundle exec rake db:drop RAILS_ENV=development; bundle exec rake db:setup RAILS_ENV=development;
-alias rdt='bundle exec rake db:drop RAILS_ENV=test; bundle exec rake db:setup RAILS_ENV=test;
+alias rdd='bundle exec rake db:drop RAILS_ENV=development; bundle exec rake db:setup RAILS_ENV=development;'
+alias rdt='bundle exec rake db:drop RAILS_ENV=test; bundle exec rake db:setup RAILS_ENV=test;'
+
+alias gcd='git checkout develop'
+alias gor='open $(git config remote.origin.url)'
