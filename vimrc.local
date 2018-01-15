@@ -49,6 +49,7 @@ map <Leader>sr :sp config/routes.rb<CR>
 map <Leader>qs yiw /<D-v><CR>
 " serach current cursor's word in ctrlP to find file
 map <Leader>qfs yiw<C-p><C-\>c
+map <Leader>df :%s/, focus: true//gc<CR>
 
 noremap <C-o> :Autoformat<CR>
 nnoremap U :echo " < < ===== C H E C K   C A P S   L O C K ===== > > "<CR>
