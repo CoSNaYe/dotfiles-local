@@ -3,3 +3,32 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # Enable rbenv
 eval "$(rbenv init -)"
+
+# init zplug
+source ~/.zplug/init.zsh
+# To manage zplug itself like other packages
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+zplug "plugins/autojump", from:oh-my-zsh
+zplug "plugins/bundler", from:oh-my-zsh
+zplug "plugins/encode64", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/gitfast", from:oh-my-zsh
+zplug "plugins/jsontools", from:oh-my-zsh # handy command line tools for dealing with json data.
+zplug "plugins/node", from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/python", from:oh-my-zsh
+zplug "plugins/rails", from:oh-my-zsh
+zplug "plugins/web-search", from:oh-my-zsh # google xxxx
+zplug "plugins/urltools", from:oh-my-zsh # urlencode, urldecode
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+      echo; zplug install
+  fi
+fi
+
+zplug load

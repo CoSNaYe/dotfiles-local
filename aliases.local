@@ -8,7 +8,9 @@ alias rdd='bundle exec rake db:drop RAILS_ENV=development; bundle exec rake db:s
 alias rdt='bundle exec rake db:drop RAILS_ENV=test; bundle exec rake db:setup RAILS_ENV=test;'
 
 alias rdes='cap staging deploy'
-alias rdpp='cap production deploy'
+alias rdep='cap production deploy'
+
+alias rfind='find . -name "*.rb" | xargs grep -n'
 
 # For git
 alias gcd='git checkout develop'
