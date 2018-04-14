@@ -22,6 +22,7 @@ zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/rails", from:oh-my-zsh
 zplug "plugins/web-search", from:oh-my-zsh # google xxxx
 zplug "plugins/urltools", from:oh-my-zsh # urlencode, urldecode
+zplug "paulirish/git-open", as:plugin
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

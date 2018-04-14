@@ -14,4 +14,4 @@ alias rfind='find . -name "*.rb" | xargs grep -n'
 
 # For git
 alias gcd='git checkout develop'
-alias gor='open $(git config remote.origin.url)'
+alias gor="git open" # use https://github.com/paulirish/git-open to open
