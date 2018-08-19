@@ -1,3 +1,7 @@
 [alias]
-  br = branch
+  # Get the current branch name (not so useful in itself, but used in other aliases)
+  branch-name="!git rev-parse --abbrev-ref HEAD"
+
+  br=branch
   grbd='git checkout develop; git pull origin develop; git checkout -; git rebase develop;'
+  gp='git pull origin $(git branch-name)'
