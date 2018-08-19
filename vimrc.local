@@ -55,3 +55,11 @@ map <Leader>df :%s/, focus: true//gc<CR>
 
 noremap <C-o> :Autoformat<CR>
 nnoremap U :echo " < < ===== C H E C K   C A P S   L O C K ===== > > "<CR>
+
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+
+" Temporarily silent the python3 warning
+" https://github.com/vim/vim/issues/3117
+if has('python3')
+  silent! python3 1
+endif
