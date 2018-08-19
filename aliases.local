@@ -6,8 +6,8 @@ alias rgb='rm Gemfile.lock; bundle'
 
 alias rdd='bundle exec rake db:drop RAILS_ENV=development; bundle exec rake db:setup RAILS_ENV=development;'
 alias rdt='bundle exec rake db:drop RAILS_ENV=test; bundle exec rake db:setup RAILS_ENV=test;'
-
-alias rdac='RAILS_ENV=development bundle exec rake assets:precompile'
+alias racd='bundle exec rake assets:precompile RAILS_ENV=development'
+alias ract='bundle exec rake assets:precompile RAILS_ENV=test'
 
 alias rdes='cap staging deploy'
 alias rdep='cap production deploy'
