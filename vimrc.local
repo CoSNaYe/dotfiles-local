@@ -52,12 +52,15 @@ map <Leader>qs yiw /<D-v><CR>
 " serach current cursor's word in ctrlP to find file
 map <Leader>qfs yiw<C-p><C-\>c
 map <Leader>df :%s/, focus: true//gc<CR>
+" copy the full path of current file to clipboard
+" http://vim.wikia.com/wiki/Copy_filename_to_clipboard
+nmap <Leader>cs :let @*=expand("%")<CR>
 
 noremap <C-o> :Autoformat<CR>
 nnoremap U :echo " < < ===== C H E C K   C A P S   L O C K ===== > > "<CR>
-
-let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
-
+"
+" let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+"
 " Temporarily silent the python3 warning
 " https://github.com/vim/vim/issues/3117
 if has('python3')
