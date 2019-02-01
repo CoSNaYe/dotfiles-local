@@ -3,32 +3,9 @@ colorscheme base16-tomorrow-night
 
 highlight ALEWarning ctermbg=240
 
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Allow for cursor beyond last character
-set virtualedit=onemore
-
-" Keep at least 4 lines below cursor
-set scrolloff=4
-
-" hightlight column and line
-set cursorline
-
-" Sane indentation on pastes
-set pastetoggle=<F12>
-
-" Case insensitive search
-set ic
-
-" No beeping
-set visualbell
-
-" Display the current mode
-set showmode
-
-" use the system clipboard for copy and paste
-set clipboard=unnamed
+" ================ General Config ====================
+set clipboard=unnamed " use the system clipboard for copy and paste
+set cursorline " hightlight column and line
 
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
@@ -40,10 +17,71 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+set ic " Case insensitive search
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+set pastetoggle=<F12> " Same indentation on pastes
+set scrolloff=4 " Keep at least 4 lines below cursor
+set showmode " Display the current mode
+set virtualedit=onemore " Allow for cursor beyond last character
+set visualbell " No beeping
+
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
+
+" ================  NERDTree Config ====================
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Automatically delete the buffer of the file you just deleted with NerdTree
+let NERDTreeAutoDeleteBuffer = 1
+" disable that old “Press ? for help”
+let NERDTreeMinimalUI = 1
+" make it slightly prettier
+let NERDTreeDirArrows = 1
+
+map <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
+
+" ================ vim-javascript ==================
+let g:javascript_plugin_jsdoc = 1 " Enables syntax highlighting for JSDocs.
+
+
+" ================ prettier/vim-prettier ==================
+" enable vim-prettier to run in files without requiring the "@format" doc tag
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+
+" ================ HOTKEYS  ====================
 "Remove all trailing whitespace
 nnoremap <Leader>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-map <C-n> :NERDTreeToggle<CR>
 map <Leader>sc :sp db/schema.rb<CR>
 map <Leader>sr :sp config/routes.rb<CR>
 
@@ -52,12 +90,14 @@ map <Leader>qs yiw /<D-v><CR>
 " serach current cursor's word in ctrlP to find file
 map <Leader>qfs yiw<C-p><C-\>c
 map <Leader>df :%s/, focus: true//gc<CR>
+
 " copy the full path of current file to clipboard
 " http://vim.wikia.com/wiki/Copy_filename_to_clipboard
 nmap <Leader>cs :let @*=expand("%")<CR>
 
 noremap <C-o> :Autoformat<CR>
 nnoremap U :echo " < < ===== C H E C K   C A P S   L O C K ===== > > "<CR>
+
 "
 " let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
 "
