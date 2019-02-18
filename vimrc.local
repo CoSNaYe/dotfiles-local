@@ -1,11 +1,17 @@
+set encoding="utf-8"
 let base16colorspace=256
 colorscheme base16-tomorrow-night
 
+highlight ALEError ctermbg=240
+highlight ALEStyleError ctermbg=240
 highlight ALEWarning ctermbg=240
 
 " ================ General Config ====================
 set clipboard=unnamed " use the system clipboard for copy and paste
 set cursorline " hightlight column and line
+
+" Wrap line after 100 characters
+set textwidth=100
 
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044

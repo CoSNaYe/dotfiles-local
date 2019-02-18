@@ -40,11 +40,11 @@ zplug "plugins/urltools", from:oh-my-zsh # urlencode, urldecode
 zplug "paulirish/git-open", as:plugin
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-      echo; zplug install
-  fi
-fi
+# if ! zplug check --verbose; then
+#   printf "Install? [y/N]: "
+#   if read -q; then
+#       echo; zplug install
+#   fi
+# fi
 
-zplug load
+# zplug load

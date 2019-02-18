@@ -5,6 +5,7 @@ Additional Terminal and Vim settings for [Thoughtbot dotfiles](https://github.co
 1. Install [Thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles)
 2. Clone this project into ~/dotfiles-local
 3. To enable YouCompleteMe, follow [YouCompleteMe](https://github.com/Valloric/YouCompleteMe#installation) to install
+    * If install Python by Anaconda, then we should follow the instruction [here](https://github.com/Valloric/YouCompleteMe/issues/1241#issuecomment-335051278)
 4. To enable AutoFormat, follow [AutoFormat](https://github.com/Chiel92/vim-autoformat#default-formatprograms) to enable supports for languages
     * Javascript/JSON, ESlint, sass-convert, rbeautify, remark
 5. Install powerline font
