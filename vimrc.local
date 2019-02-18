@@ -1,4 +1,4 @@
-set encoding="utf-8"
+set encoding=utf-8
 let base16colorspace=256
 colorscheme base16-tomorrow-night
 
